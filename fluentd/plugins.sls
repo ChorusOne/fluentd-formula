@@ -1,7 +1,7 @@
 {% if salt.pillar.get('fluentd:plugin_dependencies') %}
 install_fluentd_plugin_dependencies:
   pkg.installed:
-    - pkgs: {{ salt.pillar.get('fluentd:plugin_dependencies') }}
+    - pkgs: {{ salt.pillar.get('fluentd:plugin_dependencies') | yaml }}
     - refresh: True
     - require_in:
         - gem: install_fluentd_plugins
@@ -9,7 +9,7 @@ install_fluentd_plugin_dependencies:
 
 install_fluentd_plugins:
   gem.installed:
-    - names: {{ salt.pillar.get('fluentd:plugins') }}
+    - names: {{ salt.pillar.get('fluentd:plugins') | yaml }}
 
 {% set http_plugins = salt.pillar.get('fluentd:http_plugins') %}
 {% for plugin in http_plugins %}
