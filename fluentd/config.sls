@@ -27,5 +27,5 @@ create_directory_for_{{ name }}_logs:
 reload_fluentd_service:
   service.running:
     - name: fluentd
-    - enable: True
+    - enable: {{ fluentd.enabled }}
     - reload: True
