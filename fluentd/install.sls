@@ -62,12 +62,19 @@ configure_fluentd_service:
         user: {{ fluentd.user }}
         group: {{ fluentd. group }}
 
-start_fluentd_service:
+
+{% if fluent.install_only == True %}
+manage_fluentd_service:
+  service.enabled:
+    - name: fluentd
+{% else %}
+manage_fluentd_service:
   service.running:
     - name: fluentd
-    - enable: {{ fluentd.enabled }}
-    - init_delay: 30
+    - enabled: True
+    - reload: True
     - require:
         - file: configure_fluentd_service
     - watch:
         - file: configure_fluentd
+{% endif %}

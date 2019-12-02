@@ -1,6 +1,6 @@
 {% set fluentd = salt['grains.filter_by']({
     'default': {
-        'enabled': True,
+        'install_only': False,
         'version': None,
         'service': 'fluentd',
         'user': 'fluentd',
