@@ -29,3 +29,4 @@ reload_fluentd_service:
     - name: fluentd
     - enable: {{ fluentd.enabled }}
     - reload: True
+    - init_delay: 30

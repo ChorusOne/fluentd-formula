@@ -66,6 +66,7 @@ start_fluentd_service:
   service.running:
     - name: fluentd
     - enable: {{ fluentd.enabled }}
+    - init_delay: 30
     - require:
         - file: configure_fluentd_service
     - watch:
