@@ -63,7 +63,7 @@ configure_fluentd_service:
         group: {{ fluentd. group }}
 
 
-{% if fluent.install_only == True %}
+{% if fluentd.install_only == True %}
 manage_fluentd_service:
   service.enabled:
     - name: fluentd
